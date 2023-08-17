@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "football/src/main/java/com/football",
+        "football/src/main",
+        "Football_API/src/main"
+    ]
+}
