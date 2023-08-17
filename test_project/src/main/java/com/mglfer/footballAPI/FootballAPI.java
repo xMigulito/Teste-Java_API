@@ -10,14 +10,17 @@ import com.google.gson.Gson;
 
 import conversor.Conversor;
 import dados.Dados;
+import time.Time;
+import timeArray.TimeArray;
 
 public class FootballAPI {
     static String apiKey = "86b75af7e2bf4665a23b91a0ff911a53";
     static int codigoSucesso = 200;
+    static String localizarTime = "Charnock";
 
-    public static Dados acess(String teamID){
+    public static void acess(){
         try {
-            URL url = new URL("https://api.football-data.org/v2/teams/" + teamID); // Declaração da Variavel com a Url que será utilizada.
+            URL url = new URL("https://api.football-data.org/v2/teams"); // Declaração da Variavel com a Url que será utilizada.
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); // Realiza o acesso ao HTTP.
             connection.setRequestMethod("GET"); // Informa o tipo de solicitação. O Get é utilizado para solicitar dados da URL utilizada.
             connection.setRequestProperty("X-Auth-Token", apiKey); // Linha utilizada para a autenticação, através da minha apiKey.
@@ -30,14 +33,18 @@ public class FootballAPI {
             String jsonEmString = Conversor.JsontoString(resposta);
 
             Gson gson = new Gson(); // Cria uma instância, podendo ser utilizada para converter objetos Java em JSON e vice-versa.
-            Dados dados = gson.fromJson(jsonEmString, Dados.class); // Converte a String JSON em um objeto Java
+            TimeArray timesGeral = gson.fromJson(jsonEmString, TimeArray.class); // Converte a String JSON em um objeto Java
 
-            
+            System.out.println(timesGeral);
+            for (Time time : timesGeral.getTeams()) {
+                if (time.getShortName().equals(localizarTime)) {
+                    System.out.println("Time Localizado: " + localizarTime);
+                }
+            }
 
-            return dados;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
     }
 }
