@@ -1,7 +1,9 @@
-import footballAPI.FootballAPI;
+import footballAPI.DadosTime;
+import footballAPI.LocalizarTime;
 
 public class Main {
     public static void main(String[] args) {
-        FootballAPI.acess();
+        //LocalizarTime.localizarTime();
+        DadosTime.informacoes(90);
     }
 }
