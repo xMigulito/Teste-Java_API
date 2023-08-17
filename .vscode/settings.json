@@ -1,7 +1,9 @@
 {
     "java.project.sourcePaths": [
-        "football/src/main/java/com/football",
-        "football/src/main",
-        "Football_API/src/main"
+        "test_project/src/main/java/com/mglfer"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\Miguel\\Downloads\\gson-2.10.jar"
     ]
 }
