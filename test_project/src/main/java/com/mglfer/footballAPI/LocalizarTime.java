@@ -39,11 +39,17 @@ public class LocalizarTime {
                 //System.out.println(time.getShortName());
                 if (time.getShortName().equals(localizarTime)) {
                     idTime = time.getId();
+                    break;
                 }
             }
             //System.out.println(idTime);
-            DadosTime.informacoes(idTime);
-            MatchsTime.partidas(idTime);
+            if(idTime == 0){
+                System.out.println("O time " + localizarTime + " não foi localizado.");
+            }else {
+                DadosTime.informacoes(idTime);
+                MatchsTime.partidas(idTime);
+            }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
