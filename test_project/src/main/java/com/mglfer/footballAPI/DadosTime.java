@@ -38,11 +38,15 @@ public class DadosTime {
             Gson gson = new Gson(); // Cria uma instância, podendo ser utilizada para converter objetos Java em JSON e vice-versa.
             Dados dados = gson.fromJson(jsonEmString, Dados.class);
 
-            System.out.println(jsonEmString);
+            System.out.println(dados);
+            System.out.println("");
+
+            //System.out.println(jsonEmString);
 
             JsonObject jsonObject = gson.fromJson(jsonEmString, JsonObject.class);
 
             JsonArray squad = jsonObject.getAsJsonArray("squad"); // Irá obter informações referente a matriz "Squad".
+            System.out.println("Jogadores da Equipe: \n");
             for(JsonElement playerElement : squad){
                 JsonObject playerObject = playerElement.getAsJsonObject(); // Transformará em um JsonObject, que pode ser manipulado mais facilmente.
                 JsonElement nameElement = playerObject.get("name"); // A var recebe um valor primitivo ou 'null'.

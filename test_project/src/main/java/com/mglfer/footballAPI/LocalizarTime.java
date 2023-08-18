@@ -15,9 +15,9 @@ import timeArray.TimeArray;
 public class LocalizarTime {
     static String apiKey = "86b75af7e2bf4665a23b91a0ff911a53";
     static int codigoSucesso = 200;
-    static String localizarTime = "Bayern";
 
-    public static void localizarTime(){
+
+    public static void localizarTime(String localizarTime){
         try {
             URL url = new URL("https://api.football-data.org/v4/teams"); // Declaração da Variavel com a Url que será utilizada.
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); // Realiza o acesso ao HTTP.
@@ -41,8 +41,9 @@ public class LocalizarTime {
                     idTime = time.getId();
                 }
             }
-            System.out.println(idTime);
-            
+            //System.out.println(idTime);
+            DadosTime.informacoes(idTime);
+            MatchsTime.partidas(idTime);
         } catch (IOException e) {
             e.printStackTrace();
         }
