@@ -10,6 +10,7 @@ public class Main {
 
         System.out.println("Digite o time: ");
         String time = input.nextLine();
+        System.out.println("\n");
 
         LocalizarTime.localizarTime(time);
         //DadosTime.informacoes(5);
