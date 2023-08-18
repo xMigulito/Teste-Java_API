@@ -15,11 +15,11 @@ import timeArray.TimeArray;
 public class LocalizarTime {
     static String apiKey = "86b75af7e2bf4665a23b91a0ff911a53";
     static int codigoSucesso = 200;
-    static String localizarTime = "Arsenal";
+    static String localizarTime = "Bayern";
 
     public static void localizarTime(){
         try {
-            URL url = new URL("https://api.football-data.org/v2/teams"); // Declaração da Variavel com a Url que será utilizada.
+            URL url = new URL("https://api.football-data.org/v4/teams"); // Declaração da Variavel com a Url que será utilizada.
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); // Realiza o acesso ao HTTP.
             connection.setRequestMethod("GET"); // Informa o tipo de solicitação. O Get é utilizado para solicitar dados da URL utilizada.
             connection.setRequestProperty("X-Auth-Token", apiKey); // Linha utilizada para a autenticação, através da minha apiKey.
@@ -34,12 +34,15 @@ public class LocalizarTime {
             Gson gson = new Gson(); // Cria uma instância, podendo ser utilizada para converter objetos Java em JSON e vice-versa.
             TimeArray timesGeral = gson.fromJson(jsonEmString, TimeArray.class); // Converte a String JSON em um objeto Java.
 
+            int idTime = 0;
             for (Time time : timesGeral.getTeams()) { // Vasculha a lista de times, caso seja encontrado, armazena o ID.
+                //System.out.println(time.getShortName());
                 if (time.getShortName().equals(localizarTime)) {
-                    int idTime = time.getId();
+                    idTime = time.getId();
                 }
             }
-
+            System.out.println(idTime);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
